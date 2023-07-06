@@ -1,0 +1,73 @@
+package com.openbanking.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
+import com.jsp.ex.dto.BDto;
+
+public class BoardDao {
+	DataSource dataSource;
+	
+	public BoardDao() {
+		
+		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/Oracle11g");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public ArrayList<BDto> list() {
+		
+		
+		ArrayList<BDto> dtos = new ArrayList<BDto>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			String query = "select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bindent from mvc_board order by bGroup desc, bStep asc"; /*그룹(답글용)은 내림차순으로, 스텝(얘도 답글용)은 오름차순으로 사용*/
+			preparedStatement = connection.prepareCall(query);
+			resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				int bId = resultSet.getInt("bId");
+				String bName = resultSet.getString("bName");
+				String bTitle = resultSet.getString("bTitle");
+				String bContent = resultSet.getString("bContent");
+				Timestamp bDate = resultSet.getTimestamp("bDate");
+				int bHit = resultSet.getInt("bHit");
+				int bGroup = resultSet.getInt("bGroup");
+				int bStep = resultSet.getInt("bStep");
+				int bIndent = resultSet.getInt("bIndent");
+				
+				BDto dto = new BDto(bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent);
+				/*와일문을 돌리면서 하나씩 하나씩 추가*/
+				/*dto객체를 만들었다*/
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(resultSet != null) resultSet.close();
+				if(preparedStatement != null) preparedStatement.close();
+				if(connection != null) connection.close();
+				/*설정한 값 해체*/
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+}

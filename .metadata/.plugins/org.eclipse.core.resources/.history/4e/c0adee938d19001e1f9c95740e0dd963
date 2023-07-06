@@ -1,0 +1,5 @@
+package com.openbanking.command;
+
+public interface Command {
+
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler.LegendPosition"/>
+    <fullyQualifiedTypeName name="com.libraryPlus.MemberManager"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="javax.naming.Context"/>
+    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BListCommand"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BContentCommand"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BModifyCommand"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BDeleteCommand"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.dao.BDao"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BWriteCommand"/>
+    <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BReplyViewCommand"/>
+    <fullyQualifiedTypeName name="com.jsp.ex.command.BReplyCommand"/>
+    <fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="com.openbanking.command.Command"/>
+    <fullyQualifiedTypeName name="com.openbanking.dto.BoardDto"/>
+    <fullyQualifiedTypeName name="com.openbanking.command.JoinCommand"/>
+    <fullyQualifiedTypeName name="com.openbanking.command.ListCommand"/>
+    <fullyQualifiedTypeName name="com.openbanking.command.LoginCommand"/>
+    <fullyQualifiedTypeName name="Command.naverLoginCommand"/>
+    <fullyQualifiedTypeName name="dataControl.DAO"/>
+    <fullyQualifiedTypeName name="Command.naverJoinCommand"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
+</qualifiedTypeNameHistroy>

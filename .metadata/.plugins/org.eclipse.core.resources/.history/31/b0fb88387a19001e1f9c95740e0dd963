@@ -1,0 +1,18 @@
+<!-- result.jsp -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원 정보 확인</title>
+</head>
+<body>
+    <h1>회원 정보</h1>
+    <p>ID: <%= request.getAttribute("id") %></p>
+    <p>Email: <%= request.getAttribute("mail") %></p>
+    <p>Name: <%= request.getAttribute("name") %></p>
+    <p>Birthday: <%= request.getAttribute("pw") %></p>
+    <p>Birth Year: <%= request.getAttribute("birthyear") %></p>
+    <p>Mobile: <%= request.getAttribute("cp") %></p>
+</body>
+</html>

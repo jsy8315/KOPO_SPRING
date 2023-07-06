@@ -1,0 +1,35 @@
+package Command;
+
+import java.io.IOException;
+
+import dataControl.DAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class naverJoinCommand implements Command {
+	String viewPage = "/join/joinInput.jsp";
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 네이버 로그인 처리 및 회원가입 절차를 구현해야 합니다.
+        // 여기에 필요한 코드를 작성하시면 됩니다.
+    	String id = request.getParameter("id");
+    	String mail = request.getParameter("mail");
+    	String name = request.getParameter("name");
+        String cp = request.getParameter("cp");
+        
+        // 받아온 값들을 request 객체에 속성으로 설정하여 joinInput.jsp로 전달
+        request.setAttribute("id", id);
+        request.setAttribute("mail", mail);
+        request.setAttribute("name", name);
+        request.setAttribute("cp", cp);
+    }
+
+    @Override
+    public String getViewPage() {
+        if (viewPage == null) {
+            viewPage = "../error.jsp";
+        }
+        return viewPage;
+    }
+}

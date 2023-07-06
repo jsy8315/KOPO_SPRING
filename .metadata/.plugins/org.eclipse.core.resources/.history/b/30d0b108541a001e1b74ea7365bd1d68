@@ -1,0 +1,21 @@
+package com.openbanking.command;
+
+import com.openbanking.dao.MemberDao;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class JoinCommand implements Command{
+
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		String bName = request.getParameter("id");
+		String bTitle = request.getParameter("name");
+		String bContent = request.getParameter("pw");
+		
+		MemberDao memberdao = new MemberDao();
+		memberdao.join(bName, bTitle, bContent);		
+	}
+
+}

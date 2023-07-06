@@ -1,0 +1,43 @@
+package Command;
+
+import java.io.IOException;
+
+import dataControl.DAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class naverLoginCommand implements Command {
+	String viewPage = null;
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 네이버 로그인 처리 및 회원가입 절차를 구현해야 합니다.
+        // 여기에 필요한 코드를 작성하시면 됩니다.
+    	String id = request.getParameter("id");
+    	String mail = request.getParameter("mail");
+    	String name = request.getParameter("name");
+    	String birthday = request.getParameter("birthday");
+    	String birthyear = request.getParameter("birthyear");
+        String cp = request.getParameter("cp");
+        
+        DAO memberDAO = DAO.getInstance(); // DAO 인스턴스 생성 방식 변경
+        
+        boolean customerExists = memberDAO.checkNaverLogin(cp);
+        
+        if (customerExists) {
+        	//로그인 성공한걸로 간주하고 메인 페이지로 넘어감
+        	viewPage="main.bank";
+        } else {
+        	//네이버 프로필 값을 유지하고 joinInput.bank로 넘어감
+        	viewPage="naverJoin.bank";
+        }
+    }
+
+    @Override
+    public String getViewPage() {
+        if (viewPage == null) {
+            viewPage = "../error.jsp";
+        }
+        return viewPage;
+    }
+}

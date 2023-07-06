@@ -1,0 +1,11 @@
+1688381984792	Rename type 'Dao'
+1688382004196	Rename type 'Dto'
+1688385830078	Move 'join.jsp' to 'webapp'
+1688385834956	Delete element
+1688386318975	Encapsulate field 'id'
+1688386323520	Encapsulate field 'name'
+1688386327856	Encapsulate field 'pw'
+1688386332984	Encapsulate field 'cp'
+1688386337011	Encapsulate field 'mail'
+1688386340195	Encapsulate field 'status'
+1688386343676	Encapsulate field 'authority'
