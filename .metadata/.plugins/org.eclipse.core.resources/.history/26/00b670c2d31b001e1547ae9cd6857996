@@ -51,7 +51,6 @@
 		 else { %>
 			<a href="joinInput.bank">회원가입</a>
 			<a href="loginInput.bank">로그인</a>
-			<a href="loginInput.bank">이체</a>
 		<% } %>
 	</body>
 </html>
