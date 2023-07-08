@@ -40,8 +40,29 @@
 	<button id="transferBtn">이체하기</button>
 	
 	<script>
+        const transferData = {
+            wBankCode: "<%= wBankCode %>",
+            wAccountNumber: "<%= wAccountNumber %>",
+            wName: "<%= wName %>",
+            TransferAmount: "<%= TransferAmount %>",
+            dBankCode: "<%= dBankCode %>",
+            dAccountNumber: "<%= dAccountNumber %>",
+            dName: "<%= dName %>"
+        };
+
 		document.getElementById("transferBtn").addEventListener("click", function() {
-			location.href = "transfer.bank";
+            fetch('/transfer.openbanking', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(transferData)
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+                // Handle response data...
+            });
 		});
 	</script>
 </body>
