@@ -37,4 +37,6 @@
     <fullyQualifiedTypeName name="dataControl.DAO"/>
     <fullyQualifiedTypeName name="Command.naverJoinCommand"/>
     <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="Command.selectDepositBankCommand"/>
+    <fullyQualifiedTypeName name="Command.transferCommand"/>
 </qualifiedTypeNameHistroy>

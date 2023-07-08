@@ -10,3 +10,7 @@
 1688641220066	Delete element
 1688641313825	Copy compilation unit
 1688641320867	Delete element
+1688708696964	Delete element
+1688709368319	Encapsulate field 'accountNumber'
+1688709373778	Encapsulate field 'accountHolder'
+1688709377115	Encapsulate field 'balance'

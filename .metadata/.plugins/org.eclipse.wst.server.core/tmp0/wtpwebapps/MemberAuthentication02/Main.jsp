@@ -51,7 +51,7 @@
 		 else { %>
 			<a href="joinInput.bank">회원가입</a>
 			<a href="loginInput.bank">로그인</a>
-			<a href="loginInput.bank">이체</a>
+			<a href="dwCheck.jsp">이체</a> <!-- 일단 중간단계 건너 뛰고 dwCheck.jsp로 이동 -->
 		<% } %>
 	</body>
 </html>
