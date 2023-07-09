@@ -27,7 +27,6 @@
     <fullyQualifiedTypeName name="com.jsp.ex.command.BReplyCommand"/>
     <fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
-    <fullyQualifiedTypeName name="java.net.URL"/>
     <fullyQualifiedTypeName name="com.openbanking.command.Command"/>
     <fullyQualifiedTypeName name="com.openbanking.dto.BoardDto"/>
     <fullyQualifiedTypeName name="com.openbanking.command.JoinCommand"/>
@@ -39,4 +38,5 @@
     <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="Command.selectDepositBankCommand"/>
     <fullyQualifiedTypeName name="Command.transferCommand"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
 </qualifiedTypeNameHistroy>
