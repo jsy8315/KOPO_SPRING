@@ -13,7 +13,7 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
 import com.google.gson.JsonObject;
 
 public class OpenBankingDAO {
-	
+
     private String sendPOSTRequest(String url, JsonObject jsonObject) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
@@ -27,20 +27,20 @@ public class OpenBankingDAO {
 
         CloseableHttpResponse response = httpClient.execute(httpPost);
         String result = null;
-		try {
-			result = EntityUtils.toString(response.getEntity());
-		} catch (ParseException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        response.close();
+        try {
+            result = EntityUtils.toString(response.getEntity());
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        } finally {
+            response.close();
+        }
 
         return result;
     }
 
     public boolean depositToBank01(String accountNumber, String amount) {
         try {
-            String url = "http://localhost:8082"; // 보낼 개별은행 주소
+            String url = "http://localhost:8083/MemberAuthentication02"; // 보낼 개별은행 주소
 
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("dAccountNumber", accountNumber);
@@ -48,7 +48,8 @@ public class OpenBankingDAO {
 
             String response = sendPOSTRequest(url, jsonObject);
 
-            // assuming the response body is a simple true or false
+            // 여기서 잘 될 경우 응답을 확인
+            // 성공적으로 입금이 되면, 해당 은행의 API가 true라는 응답을 보내고, 여기서 받음.
             return Boolean.parseBoolean(response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,22 +58,36 @@ public class OpenBankingDAO {
     }
 
     public boolean depositToBank02(String accountNumber, String amount) {
-        // Similar to depositToBank01, but for Bank02's API.
-        return true; // or false.
+        try {
+            String url = "http://localhost:8082/MemberAuthentication02/deposit"; // 보낼 개별은행 주소
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("dAccountNumber", accountNumber);
+            jsonObject.addProperty("transferAmount", amount);
+
+            String response = sendPOSTRequest(url, jsonObject);
+
+            // 여기서 잘 될 경우 응답을 확인
+            // 성공적으로 입금이 되면, 해당 은행의 API가 true라는 응답을 보내고, 여기서 받음.
+            return Boolean.parseBoolean(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public boolean depositToBank03(String accountNumber, String amount) {
-        // Similar to depositToBank01, but for Bank02's API.
+        // Similar to depositToBank01, but for Bank03's API.
         return true; // or false.
     }
-    
+
     public boolean depositToBank04(String accountNumber, String amount) {
-        // Similar to depositToBank01, but for Bank02's API.
+        // Similar to depositToBank01, but for Bank04's API.
         return true; // or false.
     }
-    
+
     public boolean depositToBank05(String accountNumber, String amount) {
-        // Similar to depositToBank01, but for Bank02's API.
+        // Similar to depositToBank01, but for Bank05's API.
         return true; // or false.
     }
 }

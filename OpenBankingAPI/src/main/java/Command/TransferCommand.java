@@ -4,25 +4,35 @@ import java.io.IOException;
 
 import com.google.gson.Gson;
 
+import DAODTO.OpenBankingDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import DAODTO.OpenBankingDAO;
 
 public class TransferCommand implements Command {
+    private String wBankCode;
+    private String wAccountNumber;
+    private String wName;
+    private String transferAmount;
+    private String dBankCode;
+    private String dAccountNumber;
+    private String dName;
+
+    public void setParameters(String wBankCode, String wAccountNumber, String wName, String transferAmount,
+                              String dBankCode, String dAccountNumber, String dName) {
+        this.wBankCode = wBankCode;
+        this.wAccountNumber = wAccountNumber;
+        this.wName = wName;
+        this.transferAmount = transferAmount;
+        this.dBankCode = dBankCode;
+        this.dAccountNumber = dAccountNumber;
+        this.dName = dName;
+    }
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
-        // Get parameters
-        String wBankCode = request.getParameter("wBankCode");
-        String wAccountNumber = request.getParameter("wAccountNumber");
-        String wName = request.getParameter("wName");
-        String transferAmount = request.getParameter("TransferAmount");
-        String dBankCode = request.getParameter("dBankCode");
-        String dAccountNumber = request.getParameter("dAccountNumber");
-        String dName = request.getParameter("dName");
-
         OpenBankingDAO dao = new OpenBankingDAO();
-        
         boolean result = false;
+
         switch (dBankCode) {
             case "01":
                 result = dao.depositToBank01(dAccountNumber, transferAmount);

@@ -50,12 +50,13 @@
         params.append('dAccountNumber', "<%= dAccountNumber %>");
         params.append('dName', "<%= dName %>");
 
-        fetch('http://localhost:8080/openapi/transfer', { // OpenAPI URL에 json형태로 계좌 이체 정보를 전송
+        fetch('http://localhost:8080/OpenBankingAPI', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                'cmd': 'transfer', // cmd로 OpenBankingFrontController에서 구분
                 'wBankCode': "<%= wBankCode %>",
                 'wAccountNumber': "<%= wAccountNumber %>",
                 'wName': "<%= wName %>",
@@ -68,8 +69,8 @@
             return response.json();
         }).then(function(data) {
             console.log(data);
-            // Handle response data...
         });
+
 
     });
 	</script>
