@@ -40,30 +40,39 @@
 	<button id="transferBtn">이체하기</button>
 	
 	<script>
-        const transferData = {
-            wBankCode: "<%= wBankCode %>",
-            wAccountNumber: "<%= wAccountNumber %>",
-            wName: "<%= wName %>",
-            TransferAmount: "<%= TransferAmount %>",
-            dBankCode: "<%= dBankCode %>",
-            dAccountNumber: "<%= dAccountNumber %>",
-            dName: "<%= dName %>"
-        };
+    document.getElementById("transferBtn").addEventListener("click", function() {
+        const params = new URLSearchParams();
+        params.append('wBankCode', "<%= wBankCode %>");
+        params.append('wAccountNumber', "<%= wAccountNumber %>");
+        params.append('wName', "<%= wName %>");
+        params.append('TransferAmount', "<%= TransferAmount %>");
+        params.append('dBankCode', "<%= dBankCode %>");
+        params.append('dAccountNumber', "<%= dAccountNumber %>");
+        params.append('dName', "<%= dName %>");
 
-		document.getElementById("transferBtn").addEventListener("click", function() {
-            fetch('/transfer.openbanking', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(transferData)
-            }).then(function(response) {
-                return response.json();
-            }).then(function(data) {
-                console.log(data);
-                // Handle response data...
-            });
-		});
+        fetch('http://localhost:8080/openapi/transfer', { // OpenAPI URL에 json형태로 계좌 이체 정보를 전송
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'wBankCode': "<%= wBankCode %>",
+                'wAccountNumber': "<%= wAccountNumber %>",
+                'wName': "<%= wName %>",
+                'TransferAmount': "<%= TransferAmount %>",
+                'dBankCode': "<%= dBankCode %>",
+                'dAccountNumber': "<%= dAccountNumber %>",
+                'dName': "<%= dName %>"
+            })
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+            // Handle response data...
+        });
+
+    });
 	</script>
+
 </body>
 </html>

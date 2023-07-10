@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
 	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v10.1">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
@@ -9,5 +13,22 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpclient5-testing-5.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpclient5-win-5.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpclient5-cache-5.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpclient5-fluent-5.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpclient5-5.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpcore5-testing-5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpcore5-reactive-5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpcore5-h2-5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/httpcore5-5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/jna-5.12.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/jna-platform-5.12.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/commons-cli-1.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/rxjava-3.1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/reactive-streams-1.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/rxjava-2.2.21.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/lib/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JungSuyoung/Downloads/gson-2.10.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -1,27 +1,40 @@
 package com.openbanking.api.controller;
 
-import com.openbanking.api.command.Command;
-import com.openbanking.api.command.TransferCommand;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import Command.TransferCommand;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/openapi")
 public class OpenBankingFrontController extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
-        String path = request.getPathInfo();
+    private static final long serialVersionUID = 1L;
 
-        Command command = null;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+        String json = reader.readLine();
+        reader.close();
+        
+        Gson gson = new Gson();
+        JsonObject jsonObj = gson.fromJson(json, JsonObject.class);
+        String cmd = jsonObj.get("cmd").getAsString();
 
-        if ("/transfer".equals(path)) {
-            command = new TransferCommand();
-        }
-        // else if (...) 다른 Command들이 필요하면 이곳에 추가
-
-        if (command != null) {
-            command.execute(request, response);
-        } else {
-            // 알 수 없는 요청에 대한 처리
+        if (cmd != null) {
+            if (cmd.equals("transfer")) {
+                new TransferCommand().execute(request, response);
+            }
+            // 추후에 다른 기능이 추가되면, 여기에 if 문으로 더 추가
         }
     }
 }
+
+
 
