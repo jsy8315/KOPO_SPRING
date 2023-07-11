@@ -42,4 +42,6 @@
     <fullyQualifiedTypeName name="dwDAODTO.TransferResponse"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="com.google.gson.JsonSyntaxException"/>
 </qualifiedTypeNameHistroy>

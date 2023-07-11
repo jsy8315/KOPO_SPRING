@@ -35,19 +35,19 @@ public class TransferCommand implements Command {
 
         switch (dBankCode) {
             case "01":
-                result = dao.depositToBank01(dAccountNumber, transferAmount);
+                result = dao.withdrawToBank01(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
             case "02":
-                result = dao.depositToBank02(dAccountNumber, transferAmount);
+                result = dao.withdrawToBank02(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
             case "03":
-                result = dao.depositToBank03(dAccountNumber, transferAmount);
+                result = dao.withdrawToBank03(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
             case "04":
-                result = dao.depositToBank04(dAccountNumber, transferAmount);
+                result = dao.withdrawToBank04(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
             case "05":
-                result = dao.depositToBank05(dAccountNumber, transferAmount);
+                result = dao.withdrawToBank05(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
             default:
                 // handle error
