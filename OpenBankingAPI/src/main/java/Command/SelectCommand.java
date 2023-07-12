@@ -1,7 +1,6 @@
 package Command;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 import com.google.gson.JsonArray;
@@ -11,39 +10,41 @@ import DAODTO.OpenBankingSelectDAO;
 
 public class SelectCommand {
     private String identityNum;
+    private OpenBankingSelectDAO dao = new OpenBankingSelectDAO();
 
     public void setParameters(String identityNum) {
         this.identityNum = identityNum;
     }
 
-    public CompletableFuture<JsonArray> execute() {
-        OpenBankingSelectDAO dao = new OpenBankingSelectDAO();
-        List<String> banks = dao.getBanks();
+    public String[] getBankUrls() {
+        return new String[]{
+            "http://localhost:8081/MemberAuthentication01/select",
+            "http://localhost:8082/MemberAuthentication02/select",
+            "http://localhost:8083/MemberAuthentication03/select",
+            "http://localhost:8084/MemberAuthentication04/select",
+            "http://localhost:8085/MemberAuthentication05/select"
+        };
+    }
 
+    public OpenBankingSelectDAO getDao() {
+        return this.dao;
+    }
+
+    public CompletableFuture<JsonArray> execute() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("identityNum", identityNum);
 
-        List<CompletableFuture<JsonArray>> futures = new ArrayList<>();
+        CompletableFuture<JsonArray>[] futures = Arrays.stream(getBankUrls())
+            .map(url -> getDao().selectBank(url, jsonObject))
+            .toArray(CompletableFuture[]::new);
 
-        for (String bank : banks) {
-            CompletableFuture<JsonArray> future = dao.selectBank(bank, jsonObject);
-            futures.add(future);
-        }
-
-        System.out.println("001 : 각 은행에 조회 요청 전송 완료");
-
-        return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
+        return CompletableFuture.allOf(futures)
                 .thenApply(v -> {
-                    System.out.println("002 : 모든 은행 조회 완료");
-
                     JsonArray resultArray = new JsonArray();
                     for (CompletableFuture<JsonArray> future : futures) {
-                        JsonArray bankData = future.join();
-                        resultArray.addAll(bankData);
-                        System.out.println("003 : 데이터 합치기 완료");
+                        resultArray.addAll(future.join());
                     }
                     return resultArray;
-                    
                 });
     }
 }

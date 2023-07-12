@@ -1,115 +1,57 @@
 package DAODTO;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.concurrent.CompletableFuture;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.io.OutputStreamWriter;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
-import org.apache.hc.client5.http.classic.methods.HttpPost;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.apache.hc.core5.http.ParseException;
-import org.apache.hc.core5.http.io.entity.EntityUtils;
-import org.apache.hc.core5.http.io.entity.StringEntity;
-
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 public class OpenBankingSelectDAO {
-    private List<String> banks = Arrays.asList(
-        "http://localhost:8081/MemberAuthentication01/select",
-        "http://localhost:8082/MemberAuthentication02/select"
-        //"http://localhost:8083/MemberAuthentication03/select",
-        //"http://localhost:8084/MemberAuthentication04/select",
-        //"http://localhost:8085/MemberAuthentication05/select"
-    );
-    private Gson gson = new Gson();
 
-
-    public List<String> getBanks() {
-        return this.banks;
-    }
-
-    private CompletableFuture<JsonObject> sendPOSTRequestAsync(String url, JsonObject jsonObject) {
+    public CompletableFuture<JsonArray> selectBank(String bankUrl, JsonObject jsonObject) {
         return CompletableFuture.supplyAsync(() -> {
-            try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                HttpPost httpPost = new HttpPost(url);
+            try {
+                URL url = new URL(bankUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type", "application/json");
+                conn.setDoOutput(true);
 
-                // add header
-                httpPost.setHeader("Content-type", "application/json");
+                OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
+                osw.write(jsonObject.toString());
+                osw.flush();
+                osw.close();
 
-                // add request body
-                StringEntity stringEntity = new StringEntity(jsonObject.toString());
-                httpPost.setEntity(stringEntity);
-
-                try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
-                    String result = EntityUtils.toString(response.getEntity());
-
-                    // Return the response as JSON object
-                    return new JsonParser().parse(result).getAsJsonObject();
-                } catch (IOException | ParseException e) {
-                    throw new CompletionException(e);
+                if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                    throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
                 }
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+                StringBuilder sb = new StringBuilder();
+                String line;
+
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+
+                br.close();
+                conn.disconnect();
+
+                JsonParser parser = new JsonParser();
+                JsonArray jsonArray = parser.parse(sb.toString()).getAsJsonArray();
+                
+                return jsonArray;
+
             } catch (Exception e) {
-                throw new CompletionException(e);
+                e.printStackTrace();
+                return null;
             }
         });
     }
-
-    public JsonObject sendPOSTRequest(String url, JsonObject jsonObject) throws IOException {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost(url);
-
-        // add header
-        httpPost.setHeader("Content-type", "application/json");
-
-        // add request body
-        StringEntity stringEntity = new StringEntity(jsonObject.toString());
-        httpPost.setEntity(stringEntity);
-
-        CloseableHttpResponse response = httpClient.execute(httpPost);
-        JsonObject result = null;
-        try {
-            String resultString = EntityUtils.toString(response.getEntity());
-            result = new JsonParser().parse(resultString).getAsJsonObject();
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-        } finally {
-            response.close();
-        }
-
-        return result;
-    }
-
-    public CompletableFuture<JsonArray> selectBank(String url, JsonObject jsonObject) {
-        return sendPOSTRequestAsync(url, jsonObject)
-            .thenApply(response -> {
-                JsonArray accountArray = response.getAsJsonArray("accounts");
-                if (accountArray != null) {
-                    for (int i = 0; i < accountArray.size(); i++) {
-                        JsonObject accountObject = accountArray.get(i).getAsJsonObject();
-                        String accountNum = accountObject.get("accountNum").getAsString();
-                        String bankCode = accountObject.get("bankCode").getAsString();
-                        String accCode = accountObject.get("accCode").getAsString();
-                        String accBalance = accountObject.get("accBalance").getAsString();
-
-                        // Create a BankAccountInfo object with the received data
-                        BankAccountInfo bankAccountInfo = new BankAccountInfo(accountNum, bankCode, accCode, accBalance);
-
-                        // Convert the BankAccountInfo object to JsonObject and replace the original account object
-                        JsonElement bankAccountInfoElement = gson.toJsonTree(bankAccountInfo);
-                        accountArray.set(i, bankAccountInfoElement);
-                    }
-                }
-                return accountArray;
-            });
-    }
-
-
-    
 }

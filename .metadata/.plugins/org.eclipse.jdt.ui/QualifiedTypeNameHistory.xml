@@ -48,9 +48,11 @@
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="dwCommand.SelectAccountCommand"/>
-    <fullyQualifiedTypeName name="java.util.concurrent.CompletableFuture"/>
     <fullyQualifiedTypeName name="DAODTO.OpenBankingDAO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="DAODTO.OpenBankingSelectDAO"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.CompletableFuture"/>
+    <fullyQualifiedTypeName name="org.apache.hc.client5.http.impl.classic.CloseableHttpResponse"/>
     <fullyQualifiedTypeName name="com.google.gson.JsonElement"/>
 </qualifiedTypeNameHistroy>
