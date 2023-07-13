@@ -26,4 +26,16 @@
     <!--
     <Manager pathname="SESSIONS.ser" />
     -->
+<!--DBCP 커넥션풀 만들기-->
+<Resource
+        name="jdbc/Oracle11g"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="oracle.jdbc.driver.OracleDriver"
+        url="jdbc:oracle:thin:@kopoopenbankingdb_medium?TNS_ADMIN=C:/Users/JungSuyoung/Documents/TaehwaCloud/Wallet_KOPOOPENBANKINGDB"
+        username="admin"
+        password="@oraclepass12A"
+        maxTotal="50"
+        maxWaitMillis="1000"
+    />
 </Context>

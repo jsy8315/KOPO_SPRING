@@ -28,14 +28,14 @@
     -->
 <!--DBCP 커넥션풀 만들기-->
 <Resource
-	auth = "Container"
-	driverClassName = "oracle.jdbc.driver.OracleDriver"
-	url = "jdbc:oracle:thin:@//localhost:1521/dink17"
-	username = "C##SCOTT"
-	password = "TIGER"
-	name = "jdbc/Oracle11g"
-	type = "javax.sql.DataSource"
-	maxActive = "50"
-	maxWait = "1000"
-/>
+        name="jdbc/Oracle11g"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="oracle.jdbc.driver.OracleDriver"
+        url="jdbc:oracle:thin:@kopoopenbankingdb_medium?TNS_ADMIN=C:/Users/JungSuyoung/Documents/TaehwaCloud/Wallet_KOPOOPENBANKINGDB"
+        username="admin"
+        password="@oraclepass12A"
+        maxTotal="50"
+        maxWaitMillis="1000"
+    />
 </Context>

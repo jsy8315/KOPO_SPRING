@@ -29,31 +29,28 @@ public class TransferCommand implements Command {
     }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) {
+    public boolean execute(HttpServletRequest request, HttpServletResponse response) {
         OpenBankingDAO dao = new OpenBankingDAO();
         boolean result = false;
 
         switch (dBankCode) {
-            case "01":
+            case "TH":
                 result = dao.withdrawToBank01(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
-            case "02":
+            case "ZERO":
                 result = dao.withdrawToBank02(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
-            case "03":
+            case "HI":
                 result = dao.withdrawToBank03(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
-            case "04":
+            case "ALMOND":
                 result = dao.withdrawToBank04(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
-                break;
-            case "05":
-                result = dao.withdrawToBank05(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
                 break;
             default:
                 // handle error
                 break;
         }
-
+        /* boolean result를 OpenBankingFrontController에 반환하도록 코드 주석처리
         try {
             // Send response
             response.setContentType("application/json");
@@ -62,5 +59,7 @@ public class TransferCommand implements Command {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
+        return result;  // 결과 반환
     }
 }

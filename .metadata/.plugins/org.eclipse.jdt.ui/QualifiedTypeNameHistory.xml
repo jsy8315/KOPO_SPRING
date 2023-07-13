@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.knowm.xchart.style.Styler.LegendPosition"/>
-    <fullyQualifiedTypeName name="com.libraryPlus.MemberManager"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="javax.naming.Context"/>
     <fullyQualifiedTypeName name="javax.sql.DataSource"/>
@@ -55,4 +52,12 @@
     <fullyQualifiedTypeName name="java.util.concurrent.CompletableFuture"/>
     <fullyQualifiedTypeName name="org.apache.hc.client5.http.impl.classic.CloseableHttpResponse"/>
     <fullyQualifiedTypeName name="com.google.gson.JsonElement"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletRequest"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.ServletException"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.ServletRequest"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.ServletResponse"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.FilterChain"/>
 </qualifiedTypeNameHistroy>

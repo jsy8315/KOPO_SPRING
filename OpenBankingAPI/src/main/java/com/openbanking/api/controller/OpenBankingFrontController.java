@@ -21,6 +21,10 @@ public class OpenBankingFrontController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("요청이 도착했습니다."); // 요청 응답을 하기 위해서 넣은 코드
+        
+        // CORS 헤더 설정
+        setAccessControlHeaders(response);
+        
         BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = reader.readLine();
         reader.close();
@@ -45,9 +49,15 @@ public class OpenBankingFrontController extends HttpServlet {
 
             TransferCommand transferCommand = new TransferCommand();
             transferCommand.setParameters(wBankCode, wAccountNumber, wName, transferAmount, dBankCode, dAccountNumber, dName);
-            transferCommand.execute(request, response);
+            boolean result = transferCommand.execute(request, response);  // 결과 받기
 
-            System.out.println("요청을 보냈습니다."); // 요청 응답을 하기 위해서 넣은 코드
+            JsonObject responseJson = new JsonObject();
+            responseJson.addProperty("result", result ? "success" : "fail");
+
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(new Gson().toJson(responseJson));  //응답 바디에 JSON 데이터를 쓰는 코드
+            System.out.println("dwCheck.jsp에 응답 : " + responseJson); //responseJson은 이체의 성공 여부를 나타내는 JSON 객체
         }
     }
     
@@ -56,6 +66,7 @@ public class OpenBankingFrontController extends HttpServlet {
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         setAccessControlHeaders(resp);
+        resp.setStatus(HttpServletResponse.SC_OK);
     }
 
     // CORS 설정을 위한 메소드
