@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class Car {
 	
 	private Tire tire;
+	
 	public Car() {
 		System.out.println("Car()생성자입니다.");
 	}
