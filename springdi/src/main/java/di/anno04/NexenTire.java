@@ -1,13 +1,11 @@
-package di.xml02;
+package di.anno04;
 
 import org.springframework.stereotype.Component;
 
-@Component("k1")
-public class KumhoTire implements Tire {
-	
+@Component("n")
+public class NexenTire {
 	public String getTireBrand() {
 		// TODO Auto-generated method stub
-		return "금호타이어";
+		return "넥센타이어";
 	}
-
 }

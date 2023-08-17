@@ -1,4 +1,4 @@
-package di.xml02;
+package di.anno04;
 
 import org.springframework.stereotype.Component;
 
@@ -9,4 +9,5 @@ public class HankookTire implements Tire {
 		// TODO Auto-generated method stub
 		return "한국타이어";
 	}
+
 }
