@@ -15,12 +15,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/OpenBankingAPI")
+@WebServlet("/OpenBankingAPI02")
 public class OpenBankingFrontController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("요청이 도착했습니다."); // 요청 응답을 하기 위해서 넣은 코드
+        System.out.println("dwCheck.jsp로부터 요청이 도착했습니다."); // 요청 응답을 하기 위해서 넣은 코드
         
         // CORS 헤더 설정
         setAccessControlHeaders(response);

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans 
+	   https://www.springframework.org/schema/beans/spring-beans.xsd">
+	   
+	   <bean id="car" class="di.xml01.Car">
+	   		<constructor-arg ref="hankookTire"></constructor-arg>
+	   </bean> 
+	   <!-- Car car = new Car(hankookTire)와 같은 의미-->
+	   
+	   <bean id="hankookTire" class="di.xml01.HankookTire"></bean>
+	   <!-- HankookTire hankookTire = new HankookTire()와 같은 의미-->
+	   
+	   <!-- Car(TESLA-MODEL3, hankookTire -->
+	   <bean id="car1" class="di.xml01.Car">
+	   		<constructor-arg value="TESLA-MODEL3" index="0"></constructor-arg>
+	   		<constructor-arg ref="hankookTire" index="1"></constructor-arg>
+	   </bean>
+	   
+	   <!-- Car(hankookTire, TESLA-MODELY)이렇게 바꿔도 될까? -->
+	   <bean id="car2" class="di.xml01.Car">
+	   		<constructor-arg ref="hankookTire" index="1"></constructor-arg>
+	   		<constructor-arg value="TESLA-MODELY" index="0"></constructor-arg>
+	   </bean>
+	   
+	   <bean id="car3" class="di.xml01.Car">
+	   		<constructor-arg ref="hankookTire" index="2"></constructor-arg>
+	   		<constructor-arg value="TESLA-MODELX" index="0"></constructor-arg>
+	   		<constructor-arg value="2025" index="1" type="int"></constructor-arg>
+	   </bean>
+	   
+	   <bean id="car4" class="di.xml01.Car">
+	   		<constructor-arg> 
+	   			<ref bean="hankookTire"></ref>
+	   		</constructor-arg>
+	   </bean>
+	   
+	   <bean id="car5" class="di.xml01.Car">
+			<property name="driver">
+				<list>
+					<value>엄마</value>
+					<value>아빠</value>
+					<value>나</value>
+					<value>둘째동생</value>
+					<value>셋째동생</value>
+				</list>
+			</property>
+	   </bean>
+	   
+	   <!-- 자동차 수선내역 -->
+	   <bean id="car6" class="di.xml01.Car">
+	   		<property name="carhistory">
+	   	   		<map>
+	   				<entry key="20230101" value="타이어 전체 교체"></entry>
+	   				<entry key="20230102" value="전면 범퍼 교체"></entry>
+	   				<entry key="20230103" value="좌측 사이드 미러 수리"></entry>
+	   				<entry key="20230104" value="엔진 오일 교체"></entry>
+	   	   		</map>
+	   	   	</property>
+	   </bean>
+
+	   
+</beans>

@@ -2,4 +2,5 @@
 <modules>
   <module moduleId="org.eclipse.jst.jee.server:MemberAuthentication01" serverId="Tomcat v10.1 Server at localhost (3)"/>
   <module moduleId="org.eclipse.jst.jee.server:MemberAuthentication02" serverId="Tomcat v10.1 Server at localhost (4)"/>
+  <module moduleId="org.eclipse.jst.jee.server:MemberAuthentication03" serverId="Tomcat v10.1 Server at localhost (5)"/>
 </modules>

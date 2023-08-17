@@ -43,13 +43,15 @@ public class OpenBankingDAO {
         return result;
     }
 
-    public boolean depositToBank01(String accountNumber, String amount) {
+    public boolean depositToBank01(String dAccountNumber, String transferAmount, String wAccountNumber, String wBankCode) {
         try {
             String url = "http://localhost:8081/MemberAuthentication01/deposit"; // 보낼 개별은행 주소
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("dAccountNumber", accountNumber);
-            jsonObject.addProperty("transferAmount", amount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("wAccountNumber", wAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -85,6 +87,9 @@ public class OpenBankingDAO {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("wAccountNumber", wAccountNumber);
             jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
+            jsonObject.addProperty("dBankCode", "TH");
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -92,7 +97,7 @@ public class OpenBankingDAO {
             
             // 출금이 성공적으로 이루어진 경우에만 입금 진행
             if (isWithdrawn) {
-                return depositToBank01(dAccountNumber, transferAmount);
+                return depositToBank01(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
             } else {
                 return false;
             }
@@ -102,13 +107,15 @@ public class OpenBankingDAO {
             return false;
         }
     }
-    public boolean depositToBank02(String dAccountNumber, String transferAmount) {
+    public boolean depositToBank02(String dAccountNumber, String transferAmount, String wAccountNumber, String wBankCode) {
         try {
             String url = "http://localhost:8082/MemberAuthentication02/deposit"; // 보낼 개별은행 주소
 
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("dAccountNumber", dAccountNumber);
             jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("wAccountNumber", wAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -145,6 +152,9 @@ public class OpenBankingDAO {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("wAccountNumber", wAccountNumber);
             jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
+            jsonObject.addProperty("dBankCode", "ZERO");
 
             String response = sendPOSTRequest(url, jsonObject);
             
@@ -152,7 +162,7 @@ public class OpenBankingDAO {
             
             // 출금이 성공적으로 이루어진 경우에만 입금 진행
             if (isWithdrawn) {
-                return depositToBank02(dAccountNumber, transferAmount);
+                return depositToBank02(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
             } else {
                 return false;
             }
@@ -163,13 +173,15 @@ public class OpenBankingDAO {
         }
     }
 
-    public boolean depositToBank03(String accountNumber, String amount) {
+    public boolean depositToBank03(String dAccountNumber, String transferAmount, String wAccountNumber, String wBankCode) {
         try {
             String url = "http://localhost:8083/MemberAuthentication03/deposit"; // 보낼 개별은행 주소
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("dAccountNumber", accountNumber);
-            jsonObject.addProperty("transferAmount", amount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("wAccountNumber", wAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -205,6 +217,9 @@ public class OpenBankingDAO {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("wAccountNumber", wAccountNumber);
             jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
+            jsonObject.addProperty("dBankCode", "HI");
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -212,7 +227,7 @@ public class OpenBankingDAO {
             
             // 출금이 성공적으로 이루어진 경우에만 입금 진행
             if (isWithdrawn) {
-                return depositToBank03(dAccountNumber, transferAmount);
+                return depositToBank03(dAccountNumber, transferAmount,wAccountNumber, wBankCode);
             } else {
                 return false;
             }
@@ -222,13 +237,15 @@ public class OpenBankingDAO {
             return false;
         }
     }
-    public boolean depositToBank04(String accountNumber, String amount) {
+    public boolean depositToBank04(String dAccountNumber, String transferAmount, String wAccountNumber, String wBankCode) {
         try {
             String url = "http://localhost:8084/MemberAuthentication04/deposit"; // 보낼 개별은행 주소
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("dAccountNumber", accountNumber);
-            jsonObject.addProperty("transferAmount", amount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("wAccountNumber", wAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -264,6 +281,9 @@ public class OpenBankingDAO {
             JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("wAccountNumber", wAccountNumber);
             jsonObject.addProperty("transferAmount", transferAmount);
+            jsonObject.addProperty("dAccountNumber", dAccountNumber);
+            jsonObject.addProperty("wBankCode", wBankCode);
+            jsonObject.addProperty("dBankCode", "ALMOND");
 
             String response = sendPOSTRequest(url, jsonObject);
 
@@ -271,7 +291,7 @@ public class OpenBankingDAO {
             
             // 출금이 성공적으로 이루어진 경우에만 입금 진행
             if (isWithdrawn) {
-                return depositToBank04(dAccountNumber, transferAmount);
+                return depositToBank04(dAccountNumber, transferAmount, wAccountNumber, wBankCode);
             } else {
                 return false;
             }
