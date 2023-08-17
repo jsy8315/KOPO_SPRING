@@ -1,4 +1,4 @@
-package di.anno01;
+package di.anno02;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

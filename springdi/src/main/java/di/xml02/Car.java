@@ -1,5 +1,7 @@
 package di.xml02;
 
+import javax.annotation.Resource;
+
 public class Car {
 	
 	private Tire tire;
@@ -31,7 +33,8 @@ public class Car {
 	public Tire getTire() {
 		return tire;
 	}
-
+	
+	@Resource
 	public void setTire(Tire tire) {
 		System.out.println("이건 setTire(Tire tire)입니다.");
 		this.tire = tire;

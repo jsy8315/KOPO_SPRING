@@ -8,12 +8,12 @@
 	   http://www.springframework.org/schema/context
 	   http://www.springframework.org/schema/context/spring-context.xsd
 	   ">
-	
-	<context:annotation-config/>
-		<bean id = "car" class = "di.anno01.Car" />
-	    <bean id = "tire" class = "di.anno01.HankookTire" />
-	    <bean id = "kumhoTire" class = "di.anno01.KumhoTire" />
-	    <bean id = "kumhoTire1" class = "di.anno01.KumhoTire" />
-	    <bean id = "kumhoTire2" class = "di.anno01.KumhoTire" />
-	    <bean id = "kumhoTire3" class = "di.anno01.KumhoTire" />
+	   	<context:annotation-config/>
+	   	<bean id="car" class="di.anno02.Car"></bean>
+	   	<bean id="tire" class="di.anno02.HankookTire"></bean>
+	   	<bean id="kumhoTire" class="di.anno02.KumhoTire"></bean>
+	   	<!--
+	   	<bean id="tire" class="di.anno02.NexenTire"></bean> Nexentire tire = new NexenTire  
+	   	-->
+	   	
 </beans>
