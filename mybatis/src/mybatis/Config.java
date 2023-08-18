@@ -9,18 +9,26 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class Config {
    
-   private SqlSession sqlsession;
+   private SqlSession sqlSession;
    
    public Config() {
       
       try {
          String resource = "mybatis-config.xml";
-         InputStream inputStream = Resources.getResourceAsStream(resource);
-         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-         this.sqlsession = sqlSessionFactory.openSession();
+         InputStream inputStream 
+         	= Resources.getResourceAsStream(resource);
+         SqlSessionFactory sqlSessionFactory 
+         	= new SqlSessionFactoryBuilder().build(inputStream);
+         sqlSession 
+         	= sqlSessionFactory.openSession();
+         System.out.println(sqlSession);
       } catch (Exception e) {
-         e.printStackTrace();
+          e.printStackTrace();
+          // 오류 로그 출력
+          System.err.println("Config 클래스에서 오류 발생: " + e.getMessage());
       }
    }
-   
+   public SqlSession getSqlSession() {
+	   return sqlSession;
+   }
 }

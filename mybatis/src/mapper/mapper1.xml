@@ -2,8 +2,43 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="name1">
-   <select id="selectBlog" resultType="Blog">
-    	select * from emp
-  </select>
+<mapper namespace="mybatis.BoardDAO"> <!-- 보통 패키지명으로 한다 -->
+	<resultMap type="mybatis.BoardVO" id="boardMap">
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+
+
+ 	<insert id="insertNewPost">
+ 		insert into t_board (no, title, writer, content)
+ 			values(seq_t_board_no.nextval, '오늘의 기분', '정수영', '신난다')
+ 	</insert>
+ 	<insert id="insertNewPost2" parameterType="mybatis.BoardVO">
+ 		insert into t_board (no, title, writer, content)
+ 			values(seq_t_board_no.nextval, #{title}, #{writer}, #{content})
+ 			<!-- #{title}은 .getTitle과 같음 -->
+ 	</insert>
+ 	<select id="selectAll" resultType="boardVO">
+ 		select * from t_board
+ 		order by no desc
+ 	</select> 	
+ 	<select id="selectbyName" parameterType="boardVO" resultType="boardVO">
+ 		select * from t_board where writer = #{writer}
+ 	</select> 	
+ 	 <select id="selectbyName2" parameterType="String" resultMap="boardMap">
+ 		select * from t_board where writer = #{aaa}
+ 	</select>
+ 	<select id="selectbyNo" parameterType="int" resultType="boardVO">
+ 		select * from t_board where no = #{bbb}
+ 	</select>
+ 	<select id="selectbyNo2" parameterType="int" resultType="map">
+ 		select * from t_board where no = #{ccc}
+ 	</select>
+ 	<delete id="deletebyName">
+ 		delete from t_board where writer = #{ddd}
+ 	</delete>
+ 	<update id="updatebyNo">
+ 		update t_board 
+ 		set title= #{title}, writer = #{writer}, content = #{content} 
+ 		where no = #{no}
+ 	</update>
 </mapper>
