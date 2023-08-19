@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans 
+	   https://www.springframework.org/schema/beans/spring-beans.xsd">
+	   
+	   <!-- 생성자1 -->
+	   <bean id="AddCalculator01" class="di.calculator_SetterInjection.AddCalculator"></bean>
+		
+	   <!-- 생성자2 -->
+	   <bean id="AddCalculator02" class="di.calculator_SetterInjection.AddCalculator">
+	   		<property name="n1">
+	   				<value>10</value>
+	   		</property>
+	   		<property name="n2">
+	   				<value>3</value>
+	   		</property>
+	   </bean>
+	   
+	   <!-- 생성자1 -->
+	   <bean id="SubCalculator01" class="di.calculator_SetterInjection.SubCalculator"></bean>
+		
+	   <!-- 생성자2 -->
+	   <bean id="SubCalculator02" class="di.calculator_SetterInjection.SubCalculator">
+	   		<property name="n1">
+	   				<value>10</value>
+	   		</property>
+	   		<property name="n2">
+	   				<value>3</value>
+	   		</property>
+	   </bean>
+	   
+	   <!-- 생성자1 -->
+	   <bean id="MulCalculator01" class="di.calculator_SetterInjection.MulCalculator"></bean>
+		
+	   <!-- 생성자2 -->
+	   <bean id="MulCalculator02" class="di.calculator_SetterInjection.MulCalculator">
+	   		<property name="n1">
+	   				<value>10</value>
+	   		</property>
+	   		<property name="n2">
+	   				<value>3</value>
+	   		</property>
+	   </bean>
+	   
+	   	   <!-- 생성자1 -->
+	   <bean id="DivideCalculator01" class="di.calculator_SetterInjection.DivideCalculator"></bean>
+		
+	   <!-- 생성자2 -->
+	   <bean id="DivideCalculator02" class="di.calculator_SetterInjection.DivideCalculator">
+	   		<property name="n1">
+	   				<value>10</value>
+	   		</property>
+	   		<property name="n2">
+	   				<value>3</value>
+	   		</property>
+	   </bean>	   
+</beans>
