@@ -3,8 +3,8 @@ package di.tvspeaker_Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class SamsungTV implements TV{
-	private Speaker LeftSpeaker;
-	private Speaker RightSpeaker;
+	private Speaker samsungtvLeftSpeaker;
+	private Speaker samsungtvRightSpeaker;
 	
 	//생성자1
 	public SamsungTV() {
@@ -13,9 +13,9 @@ public class SamsungTV implements TV{
 
 	//생성자2
 	@Autowired
-	public SamsungTV(Speaker LeftSpeaker, Speaker RightSpeaker) {
-		this.LeftSpeaker = LeftSpeaker;
-		this.RightSpeaker = RightSpeaker;
+	public SamsungTV(Speaker samsungtvLeftSpeaker, Speaker samsungtvRightSpeaker) {
+		this.samsungtvLeftSpeaker = samsungtvLeftSpeaker;
+		this.samsungtvRightSpeaker = samsungtvRightSpeaker;
 	}
 	@Override
 	public void turnon() {
@@ -29,22 +29,22 @@ public class SamsungTV implements TV{
 	}
 	@Override
 	public void volumeup() {
-		LeftSpeaker.volumeup();
-		RightSpeaker.volumeup();
+		samsungtvLeftSpeaker.volumeup();
+		samsungtvRightSpeaker.volumeup();
 		
 	}
 	@Override
 	public void volumedown() {
-		LeftSpeaker.volumedown();
-		RightSpeaker.volumedown();
+		samsungtvLeftSpeaker.volumedown();
+		samsungtvRightSpeaker.volumedown();
 		
 	}
 	@Override
 	public void printSpeakerBrand() {
 		System.out.println("SamsungTV의 왼쪽 스피커 브랜드는 : " +
-							LeftSpeaker.getBrand() +
+				samsungtvLeftSpeaker.getBrand() +
 							", 오른쪽 스피커 브랜드는 : " +
-							RightSpeaker.getBrand() +
+							samsungtvRightSpeaker.getBrand() +
 							"입니다."
 				);
 		

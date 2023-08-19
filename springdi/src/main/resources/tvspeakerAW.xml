@@ -11,7 +11,10 @@
 	
 	<context:annotation-config/>
 		<bean id = "samsungtv" class = "di.tvspeaker_Autowired.SamsungTV" />
+	    <bean id = "samsungtvLeftSpeaker" class = "di.tvspeaker_Autowired.SamsungSpeaker" />
+	    <bean id = "samsungtvRightSpeaker" class = "di.tvspeaker_Autowired.BOSpeaker" />
 	    <bean id = "lgtv" class = "di.tvspeaker_Autowired.LgTV" />
-	    <bean id = "samsungspeaker" class = "di.tvspeaker_Autowired.SamsungSpeaker" />
-	    <bean id = "bospeaker" class = "di.tvspeaker_Autowired.BOSpeaker" />
+	    <bean id = "lgtvRightSpeaker" class = "di.tvspeaker_Autowired.SamsungSpeaker" />
+	    <bean id = "lgtvLeftSpeaker" class = "di.tvspeaker_Autowired.BOSpeaker" />
+	
 </beans>

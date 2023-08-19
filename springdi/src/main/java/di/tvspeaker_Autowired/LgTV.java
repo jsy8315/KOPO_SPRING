@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LgTV implements TV{
 	
-	private Speaker LeftSpeaker;
-	private Speaker RightSpeaker;
+	private Speaker lgtvLeftSpeaker;
+	private Speaker lgtvRightSpeaker;
 	
 	//생성자1
 	public LgTV() {
@@ -14,9 +14,9 @@ public class LgTV implements TV{
 
 	//생성자2
 	@Autowired
-	public LgTV(Speaker LeftSpeaker, Speaker RightSpeaker) {
-		this.LeftSpeaker = LeftSpeaker;
-		this.RightSpeaker = RightSpeaker;
+	public LgTV(Speaker lgtvLeftSpeaker, Speaker lgtvRightSpeaker) {
+		this.lgtvLeftSpeaker = lgtvLeftSpeaker;
+		this.lgtvRightSpeaker = lgtvRightSpeaker;
 	}
 	@Override
 	public void turnon() {
@@ -30,22 +30,22 @@ public class LgTV implements TV{
 	}
 	@Override
 	public void volumeup() {
-		LeftSpeaker.volumeup();
-		RightSpeaker.volumeup();
+		lgtvLeftSpeaker.volumeup();
+		lgtvRightSpeaker.volumeup();
 		
 	}
 	@Override
 	public void volumedown() {
-		LeftSpeaker.volumedown();
-		RightSpeaker.volumedown();
+		lgtvLeftSpeaker.volumedown();
+		lgtvRightSpeaker.volumedown();
 		
 	}
 	@Override
 	public void printSpeakerBrand() {
 		System.out.println("LgTV의 왼쪽 스피커 브랜드는 : " +
-							LeftSpeaker.getBrand() +
+				lgtvLeftSpeaker.getBrand() +
 							", 오른쪽 스피커 브랜드는 : " +
-							RightSpeaker.getBrand() +
+							lgtvRightSpeaker.getBrand() +
 							"입니다."
 				);
 		
