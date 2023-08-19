@@ -1,7 +1,12 @@
 package di.calculator_Autowired;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+
 public class AddCalculator implements Calculator{
+	@Value("10")
 	private int n1;
+	@Value("3")
 	private int n2;
 
 	public int getN1() {
