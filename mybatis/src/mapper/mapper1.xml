@@ -7,7 +7,17 @@
 		<result column="reg_date" property="regDate"/>
 	</resultMap>
 
-
+	<select id="selectDSQL" parameterType="boardVO" resultMap="boardMap">
+		select * from t_board
+		<where>
+			<if test="writer != null">
+				writer = #{writer}
+			</if>
+			<if test="title != null">
+				AND title = #{title}
+			</if>
+		</where>
+	</select>
  	<insert id="insertNewPost">
  		insert into t_board (no, title, writer, content)
  			values(seq_t_board_no.nextval, '오늘의 기분', '정수영', '신난다')

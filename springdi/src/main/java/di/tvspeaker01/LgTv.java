@@ -55,7 +55,7 @@ public class LgTv implements Tv{
 	}
 
 	public void printSpeakerBrand() {
-		System.out.println("LGTV의 왼쪽 스피커의 브랜드명은 " + 
+		System.out.println("LG TV의 왼쪽 스피커의 브랜드명은 " + 
 				leftspeaker.getSpeakerBrand()+ 
 				", 오른쪽 스피커의 브랜드명은 " +
 				rightspeaker.getSpeakerBrand()+

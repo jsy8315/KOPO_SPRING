@@ -7,7 +7,7 @@ public class SamsungSpeaker implements Speaker{
 
 	public String getSpeakerBrand() {
 		// TODO Auto-generated method stub
-		return "SAMSUNG스피커";
+		return "SAMSUNG 스피커";
 	}
 
 	public void volumeUp() {

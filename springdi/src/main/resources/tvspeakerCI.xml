@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans 
+	   https://www.springframework.org/schema/beans/spring-beans.xsd">
+	   
+	   <!-- 생성자1 -->
+	   <bean id="SamsungTV01" class="di.tvspeaker_ConstructorInjection.SamsungTV"></bean>
+		
+	   <!-- 생성자2 -->
+	   <bean id="SamsungTV02" class="di.tvspeaker_ConstructorInjection.SamsungTV">
+	   		<constructor-arg ref="SamsungSpeaker" index="0"></constructor-arg>
+	   		<constructor-arg ref="BOSpeaker" index="1"></constructor-arg>
+	   </bean>
+	   
+	   <!-- 생성자1 -->
+	   <bean id="LgTV01" class="di.tvspeaker_ConstructorInjection.LgTV"></bean>
+		
+	   <!-- 생성자2 -->
+	   <bean id="LgTV02" class="di.tvspeaker_ConstructorInjection.LgTV">
+	   		<constructor-arg ref="BOSpeaker" index="0"></constructor-arg>
+	   		<constructor-arg ref="SamsungSpeaker" index="1"></constructor-arg>
+	   </bean>
+	   
+	   <bean id="SamsungSpeaker" class="di.tvspeaker_ConstructorInjection.SamsungSpeaker"></bean>
+	   <bean id="BOSpeaker" class="di.tvspeaker_ConstructorInjection.BOSpeaker"></bean>
+</beans>

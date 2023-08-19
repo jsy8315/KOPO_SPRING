@@ -1,7 +1,5 @@
 package mybatis;
 
-import java.util.Date;
-
 public class BoardVO {
 	private int no;
 	private String title;

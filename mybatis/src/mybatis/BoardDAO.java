@@ -26,9 +26,20 @@ public class BoardDAO {
 		//selectbyNo();
 		//selectbyNo2();
 		//deletebyName();
-		updatebyNo();
+		//updatebyNo();
+		selectDynamicSQL();
 	}
-	
+	public void selectDynamicSQL() {
+		BoardVO inputboardVO = new BoardVO();
+		inputboardVO.setTitle("오펜하이머 스포한다");
+		//inputboardVO.setWriter("정수사점오");
+		List<BoardVO> boardlist = 
+		sqlSession.selectList("mybatis.BoardDAO.selectDSQL", inputboardVO);
+		
+		for (BoardVO resultboardVO : boardlist) {
+			System.out.println(resultboardVO);
+		}
+	}
 	public void selectbyNo() {
 		List<BoardVO> boardlist
 			= sqlSession.selectList("mybatis.BoardDAO.selectbyNo", 8);
