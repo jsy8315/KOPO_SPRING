@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class UserMain {
 	public static void main(String[] args) {
 		ApplicationContext context
-		= new AnnotationConfigApplicationContext(Config.class);
+		= new AnnotationConfigApplicationContext(JConfig.class);
 		
 		SamsungTv samsungtv = context.getBean("samsungTv", SamsungTv.class);
 		samsungtv.printSpeakerBrand();
