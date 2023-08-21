@@ -6,7 +6,25 @@
 	<resultMap type="mybatis.BoardVO" id="boardMap">
 		<result column="reg_date" property="regDate"/>
 	</resultMap>
-
+	
+	<select id="selectDSQLif01" parameterType="string" resultType="boardVO">
+		select * from t_board
+		<if test="title != null">
+			<where>
+				title=#{title}
+			</where>
+		</if>
+	</select>
+	
+	<select id="selectDSQLif02" parameterType="boardVO" resultMap="boardMap">
+		select * from t_board
+		<if test="title != null">
+			<where>
+				title=#{title}
+			</where>
+		</if>
+	</select>
+	
 	<select id="selectDSQL" parameterType="boardVO" resultMap="boardMap">
 		select * from t_board
 		<where>
