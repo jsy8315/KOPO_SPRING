@@ -29,8 +29,30 @@ public class BoardDAO {
 		//updatebyNo();
 		//selectDynamicSQL();
 		//selectDynamicif();
-		selectDynamicif02();
+		//selectDynamicif02();
+		//selectDforeach01();
+		selectDforeach02();
 	}
+	public void selectDforeach02() {
+		BoardVO b1 = new BoardVO();
+		int[] a1 = {1,2,3,4,5,6,7,8,9};
+		b1.setNumbers(a1);
+		List<BoardVO> boardlist
+			= sqlSession.selectList("mybatis.BoardDAO.selectDforeach02", b1);
+		for (BoardVO boardVO : boardlist) {
+			System.out.println(boardVO);
+		}		
+	}	
+	
+	public void selectDforeach01() {
+		int[] a1 = {1,2,3,4,5,6};
+		List<BoardVO> boardlist
+			= sqlSession.selectList("mybatis.BoardDAO.selectDforeach01", a1);
+		for (BoardVO boardVO : boardlist) {
+			System.out.println(boardVO);
+		}		
+	}
+	
 	public void selectDynamicif() {
 		//selectDSQLif01
 		//title "오펜하이머 스포한다"

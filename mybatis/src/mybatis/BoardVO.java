@@ -7,6 +7,7 @@ public class BoardVO {
 	private String content;
 	private String regDate;	//"reg_date"
 	private int count;
+	private int[] numbers;
 
 	public int getNo() {
 		return no;
@@ -48,6 +49,12 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
 				+ regDate + ", count=" + count + "]";
+	}
+	public int[] getNumbers() {
+		return numbers;
+	}
+	public void setNumbers(int[] numbers) {
+		this.numbers = numbers;
 	}
 	
 }

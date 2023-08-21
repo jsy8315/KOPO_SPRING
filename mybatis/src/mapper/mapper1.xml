@@ -7,6 +7,22 @@
 		<result column="reg_date" property="regDate"/>
 	</resultMap>
 	
+	<select id="selectDforeach02" parameterType="boardVO" resultType="boardVO">
+		select * from t_board where no in
+			<foreach collection="numbers" item="foreachExample02" 
+			separator=","  open="(" close=")"> 
+				#{foreachExample02}
+			</foreach>
+	</select>	
+	
+	<select id="selectDforeach01" parameterType="int[]" resultType="boardVO">
+		select * from t_board where no in
+			<foreach collection="array" item="foreachExample01" 
+			separator=","  open="(" close=")"> 
+				#{foreachExample01}
+			</foreach>
+	</select>
+	
 	<select id="selectDSQLif01" parameterType="string" resultType="boardVO">
 		select * from t_board
 		<if test="title != null">
