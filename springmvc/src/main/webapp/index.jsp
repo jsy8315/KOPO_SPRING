@@ -8,6 +8,7 @@
 </head>
 <body>
 index<br>
+<a href="${pageContext.request.contextPath}/file/uploadForm">FileUpload</a><br>
 <a href="${pageContext.request.contextPath}/hello/3">@PathVariavle처리</a><br>
 <a href="${pageContext.request.contextPath}/voresponse">memberVOesponseBody</a><br>
 <a href="${pageContext.request.contextPath}/stringresponse">spring-@ResponseBody</a><br>
@@ -18,4 +19,4 @@ index<br>
 <!-- 둘이 똑같음 -->
 <a href="${pageContext.request.contextPath}/method/method">method/method</a>
 </body>
-</html>s
+</html>
