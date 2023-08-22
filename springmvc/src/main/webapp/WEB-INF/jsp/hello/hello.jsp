@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-hello.jsp입니다.
-welcome message - ${msg}
+hello.jsp입니다.<br>
+welcome message - ${msg}<br>
+pathVariable = ${n }<br>
 </body>
 </html>

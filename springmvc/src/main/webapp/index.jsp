@@ -8,6 +8,9 @@
 </head>
 <body>
 index<br>
+<a href="${pageContext.request.contextPath}/hello/3">@PathVariavle처리</a><br>
+<a href="${pageContext.request.contextPath}/voresponse">memberVOesponseBody</a><br>
+<a href="${pageContext.request.contextPath}/stringresponse">spring-@ResponseBody</a><br>
 <a href="${pageContext.request.contextPath}/member/joinForm">회원가입</a><br>
 <a href="<%=request.getContextPath()%>/hello/h1">HelloController</a><br>
 <a href="${pageContext.request.contextPath}/hello/h1">HelloController</a><br>
@@ -15,4 +18,4 @@ index<br>
 <!-- 둘이 똑같음 -->
 <a href="${pageContext.request.contextPath}/method/method">method/method</a>
 </body>
-</html>
+</html>s
