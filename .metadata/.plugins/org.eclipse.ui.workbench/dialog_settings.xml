@@ -24,6 +24,7 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\JungSuyoung\Desktop\springboard.zip"/>
 			<item value="C:\Users\JungSuyoung\Desktop\17_스프링_1주차_계산기.zip"/>
 			<item value="C:\Users\JungSuyoung\Desktop\17_스프링_1주차_스피커.zip"/>
 			<item value="C:\Users\JungSuyoung\Desktop\17_정수영_최종과제.zip"/>
