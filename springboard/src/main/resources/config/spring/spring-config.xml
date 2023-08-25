@@ -64,10 +64,13 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/"/>
-			<mvc:exclude-mapping path="/login"/>
+			<!--<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/board"/>-->
 			<mvc:exclude-mapping path="/board"/>
+			<mvc:exclude-mapping path="/login"/>
 			<mvc:exclude-mapping path="/resources/**"/>
-			<ref bean="loginInterceptor"/>
+			<!-- 추후 회원가입 페이지 추가 -->
+			<ref bean="testInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

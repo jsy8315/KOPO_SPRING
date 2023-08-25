@@ -68,8 +68,16 @@ public class MemberController {
 					//1) 첫번째 방법session.setAttribute("currentUser", memberVO);
 					//2) 두번째 방법 @SessionAttribures를 class명 위에 설정한다
 					model.addAttribute("currentUser", memberVO);
-				return "redirect:/";
-				//http://localhost:8080/springboard/board				
+				String dest = (String)session.getAttribute("dest");
+				session.removeAttribute("dest");
+				if(dest == null) {
+					System.err.println("dest가 null입니다.");
+					return "redirect:/";
+					//http://localhost:8080/springboard/board	
+				}else {	//dest가 있으면, 
+					return "redirect:"+dest;
+				}
+							
 			}
 		}
 	}

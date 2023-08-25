@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.member.vo.MemberVO;
 
-@Component
+//@Component
 public class LoginInterceptor implements HandlerInterceptor{
 
 	@Override
@@ -31,6 +31,8 @@ public class LoginInterceptor implements HandlerInterceptor{
 		
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO)session.getAttribute("currentUser");
+		
+		session.setAttribute("dest",request.getServletPath());
 		if(memberVO == null) {	//로그인 안했으면
 			System.out.println("memberVO is null");
 			//"localhost:8080/springboard/login으로 가
