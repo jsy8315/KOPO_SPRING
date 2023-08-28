@@ -50,6 +50,13 @@ ${currentUser.name }<br>
 				<td>${boardVO.count}</td>
 			</tr>
 		</table>
+		
+		<input type="button" value="Home" 
+			onclick="location.href='${pageContext.request.contextPath}/'">
+		<input type="button" value="목록으로" 
+			onclick="location.href='${pageContext.request.contextPath}/board'">
+		<input type="button" value="삭제" 
+			onclick="location.href='${pageContext.request.contextPath}/'">
 	</div>
 </body>
 </html>
