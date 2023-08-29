@@ -6,6 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-3.7.0.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#replyAddBtn').click(function(){
+		//alert('clicked');
+		let replyContent = document.replyForm.content.value;
+		let replyWriter = document.replyForm.writer.value;
+		let boardNo = ${boardVO.no};
+
+		$.ajax({
+			url : '${pageContext.request.contextPath}/reply',
+			method : 'POST',
+			data : {
+				boardNo: boardNo,
+				content: replyContent,
+				writer: replyWriter
+			},
+			success : function(){
+				alert('성공');
+				document.replyForm.content.value="";
+				document.replyForm.writer.value="";
+			},
+			error : function(){
+                alert('실패');
+			}
+		})
+		
+	})
+	
+})
+
+</script>
+
 </head>
 <body>
 상세 게시글임
@@ -57,6 +92,13 @@ ${currentUser.name }<br>
 			onclick="location.href='${pageContext.request.contextPath}/board'">
 		<input type="button" value="삭제" 
 			onclick="location.href='${pageContext.request.contextPath}/'">
+	</div>
+	<div>
+		<form name="replyForm">
+			댓글: <input type="text" size="100" name="content">
+			작성자: <input type="text" size="20" name="writer">
+			<input type="button" value="댓글 쓰기" id="replyAddBtn">
+		</form>
 	</div>
 </body>
 </html>

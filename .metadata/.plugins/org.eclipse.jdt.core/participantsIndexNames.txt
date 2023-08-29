@@ -17,6 +17,8 @@ C:\Users\JungSuyoung\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.cor
 \IndivisalBanking\src\main\java
 C:\Users\JungSuyoung\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3599935827.index
 \jsp_18_01\src\main\java
+C:\Users\JungSuyoung\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4292884885.index
+\springboard\src\main\java
 C:\Users\JungSuyoung\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\16967960.index
 \MemberAuthentication\src\main\java
 C:\Users\JungSuyoung\Documents\GitHub\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3359327127.index

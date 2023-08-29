@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.member.vo.MemberVO;
 
-//@Component
+@Component
 public class LoginInterceptor implements HandlerInterceptor{
 
 	@Override
